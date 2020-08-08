@@ -12,12 +12,13 @@ import mill.scalalib.publish.{Developer, License, PomSettings, VersionControl}
 object `mill-s3-publish` extends ScalaModule with TpolecatModule with StyleModule with GitVersionedPublishModule {
   override def scalaVersion = "2.13.2"
 
-  lazy val millVersion = "0.8.0"
+  lazy val millVersion        = "0.8.0"
   override def compileIvyDeps = super.compileIvyDeps() ++ Agg(ivy"com.lihaoyi::mill-scalalib:$millVersion")
-  override def ivyDeps = super.ivyDeps() ++ Agg(
-    ivy"com.amazonaws:aws-java-sdk:1.11.820".exclude("com.fasterxml.jackson.core" -> "jackson-databind"),
-    ivy"com.fasterxml.jackson.core:jackson-databind:2.11.2"
-  )
+  override def ivyDeps =
+    super.ivyDeps() ++ Agg(
+      ivy"com.amazonaws:aws-java-sdk:1.11.820".exclude("com.fasterxml.jackson.core" -> "jackson-databind"),
+      ivy"com.fasterxml.jackson.core:jackson-databind:2.11.2"
+    )
 
   override def publishVersion = GitVersionModule.version(withSnapshotSuffix = true)()
   def pomSettings =
