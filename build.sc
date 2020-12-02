@@ -14,7 +14,7 @@ object `mill-s3-publish` extends ScalaModule with TpolecatModule with StyleModul
   lazy val millVersion        = "0.9.3"
   override def compileIvyDeps = super.compileIvyDeps() ++ Agg(ivy"com.lihaoyi::mill-scalalib:$millVersion")
   override def ivyDeps = super.ivyDeps() ++ Agg(
-    ivy"com.amazonaws:aws-java-sdk:1.11.820".exclude("com.fasterxml.jackson.core" -> "jackson-databind"),
+    ivy"software.amazon.awssdk:s3:2.15.36".exclude("com.fasterxml.jackson.core" -> "jackson-databind"),
     ivy"com.fasterxml.jackson.core:jackson-databind:2.11.2"
   )
 

@@ -1,10 +1,11 @@
 package com.goyeau.mill.s3.publish
 
-import com.amazonaws.services.s3.transfer.TransferManagerBuilder
 import mill.T
 import mill.define.Command
 import mill.scalalib.JavaModule
 import os.Path
+import software.amazon.awssdk.services.s3.S3Client
+import software.amazon.awssdk.services.s3.model.PutObjectRequest
 
 trait S3PublishModule extends JavaModule {
   def s3BucketName: T[String]
@@ -16,10 +17,10 @@ trait S3PublishModule extends JavaModule {
 
 object S3PublishModule {
   def publish(assembly: Path, bucketName: String, bucketKey: String): Unit = {
-    val transferManager = TransferManagerBuilder.standard().build()
-    val key             = bucketKey.replaceAll("^/+", "")
-    val upload          = transferManager.upload(bucketName, key, assembly.toIO)
+    val s3  = S3Client.create()
+    val key = bucketKey.replaceAll("^/+", "")
     println(s"Uploading assembly to s3://$bucketName/$key")
-    upload.waitForCompletion()
+    s3.putObject(PutObjectRequest.builder().bucket(bucketName).key(key).build(), assembly.toNIO)
+    ()
   }
 }
