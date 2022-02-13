@@ -1,6 +1,6 @@
 # mill-s3-publish
 
-[![Latest version](https://index.scala-lang.org/joan38/mill-s3-publish/mill-s3-publish/latest.svg?color=lightgrey)](https://index.scala-lang.org/joan38/mill-s3-publish/mill-s3-publish)
+![Maven Central](https://img.shields.io/maven-central/v/com.goyeau/mill-s3-publish_mill0.10_2.13)
 
 A Mill plugin to publish artifacts to S3.
 

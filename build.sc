@@ -1,6 +1,6 @@
-import $ivy.`com.goyeau::mill-git:0.2.0`
-import $ivy.`com.goyeau::mill-scalafix:0.2.1`
-import $ivy.`io.github.davidgregory084::mill-tpolecat:0.2.0`
+import $ivy.`com.goyeau::mill-git::0.2.3`
+import $ivy.`com.goyeau::mill-scalafix::0.2.8`
+import $ivy.`io.github.davidgregory084::mill-tpolecat::0.3.0`
 import com.goyeau.mill.git.{GitVersionModule, GitVersionedPublishModule}
 import com.goyeau.mill.scalafix.StyleModule
 import io.github.davidgregory084.TpolecatModule
@@ -9,9 +9,9 @@ import mill.scalalib._
 import mill.scalalib.publish.{Developer, License, PomSettings, VersionControl}
 
 object `mill-s3-publish` extends ScalaModule with TpolecatModule with StyleModule with GitVersionedPublishModule {
-  override def scalaVersion = "2.13.4"
+  override def scalaVersion = "2.13.7"
 
-  lazy val millVersion        = "0.9.3"
+  lazy val millVersion        = "0.10.0"
   override def compileIvyDeps = super.compileIvyDeps() ++ Agg(ivy"com.lihaoyi::mill-scalalib:$millVersion")
   override def ivyDeps = super.ivyDeps() ++ Agg(
     ivy"software.amazon.awssdk:s3:2.15.36".exclude("com.fasterxml.jackson.core" -> "jackson-databind"),
