@@ -11,7 +11,7 @@ Publishing assembly to S3.
 
 *build.sc*:
 ```scala
-import $ivy.`com.goyeau::mill-s3-publish:<latest version>`
+import $ivy.`com.goyeau::mill-s3-publish::<latest version>`
 import com.goyeau.mill.s3.publish.S3PublishModule
 import mill.scalalib.JavaModule
 
